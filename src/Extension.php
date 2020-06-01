@@ -34,6 +34,9 @@ class Extension extends AbstractPluginIntegration {
 		$dependencies = $this->get_dependencies();
 
 		$dependencies->add( new EasyDigitalDownloadsDependency() );
+
+		// Add Phone Number field in Easy Digital Downloads Plugin which is mandatory for most of the India Payment Gateways
+		require_once 'custom-field-phone.php';
 	}
 
 	/**

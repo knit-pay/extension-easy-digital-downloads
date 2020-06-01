@@ -450,6 +450,13 @@ class Gateway {
 			}
 		}
 
+		if (empty($payment->get_billing_address())){
+		    $address = new Address();
+		    $payment->set_billing_address( $address );
+		}
+
+		$payment->get_billing_address()->set_phone($purchase_data["post_data"]["edd_phone"]);
+
 		// Lines.
 		$payment->lines = new PaymentLines();
 
