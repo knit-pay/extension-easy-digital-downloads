@@ -60,7 +60,7 @@ class Extension extends AbstractPluginIntegration {
 		new Gateway(
 			array(
 				'id'             => 'pronamic_ideal',
-				'admin_label'    => __( 'Pronamic', 'pronamic_ideal' ),
+				'admin_label'    => __( 'Knit Pay', 'pronamic_ideal' ),
 				'checkout_label' => __( 'iDEAL', 'pronamic_ideal' ),
 			)
 		);
@@ -102,14 +102,14 @@ class Extension extends AbstractPluginIntegration {
 	 */
 	private static function get_payment_methods() {
 		$default = array(
-			'pronamic_pay_mister_cash'        => PaymentMethods::BANCONTACT,
+		//	'pronamic_pay_mister_cash'        => PaymentMethods::BANCONTACT,
 			'pronamic_pay_bank_transfer'      => PaymentMethods::BANK_TRANSFER,
-			'pronamic_pay_bitcoin'            => PaymentMethods::BITCOIN,
+		//	'pronamic_pay_bitcoin'            => PaymentMethods::BITCOIN,
 			'pronamic_pay_credit_card'        => PaymentMethods::CREDIT_CARD,
-			'pronamic_pay_direct_debit'       => PaymentMethods::DIRECT_DEBIT,
-			'pronamic_pay_direct_debit_ideal' => PaymentMethods::DIRECT_DEBIT_IDEAL,
-			'pronamic_pay_ideal'              => PaymentMethods::IDEAL,
-			'pronamic_pay_sofort'             => PaymentMethods::SOFORT,
+		//	'pronamic_pay_direct_debit'       => PaymentMethods::DIRECT_DEBIT,
+		//	'pronamic_pay_direct_debit_ideal' => PaymentMethods::DIRECT_DEBIT_IDEAL,
+		//	'pronamic_pay_ideal'              => PaymentMethods::IDEAL,
+		//	'pronamic_pay_sofort'             => PaymentMethods::SOFORT,
 		);
 
 		$optional = array(

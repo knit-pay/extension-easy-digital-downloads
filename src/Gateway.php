@@ -81,7 +81,7 @@ class Gateway {
 			$args['admin_label'] = sprintf(
 				/* translators: 1: Gateway admin label prefix, 2: Gateway admin label */
 				__( '%1$s - %2$s', 'pronamic_ideal' ),
-				__( 'Pronamic', 'pronamic_ideal' ),
+				__( 'Knit Pay', 'pronamic_ideal' ),
 				$args['checkout_label']
 			);
 		}
