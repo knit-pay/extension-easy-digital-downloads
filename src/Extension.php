@@ -61,7 +61,7 @@ class Extension extends AbstractPluginIntegration {
 			array(
 				'id'             => 'pronamic_ideal',
 				'admin_label'    => __( 'Knit Pay', 'pronamic_ideal' ),
-				'checkout_label' => __( 'iDEAL', 'pronamic_ideal' ),
+				'checkout_label' => __( 'Knit Pay', 'pronamic_ideal' ),
 			)
 		);
 
