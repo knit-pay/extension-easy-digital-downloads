@@ -27,7 +27,7 @@ function knitpay_edd_display_checkout_fields() {
 			<?php } ?>
 		</label>
         <span class="edd-description">
-        	Enter your phone number so we can get in touch with you.
+        	Enter your phone number.
         </span>
         <input class="edd-input" type="text" name="edd_phone" id="edd-phone" placeholder="Phone Number" />
     </p>
