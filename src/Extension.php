@@ -50,6 +50,8 @@ class Extension extends AbstractPluginIntegration {
 
 		$dependencies->add( new EasyDigitalDownloadsDependency() );
 
+		add_action( 'plugins_loaded', [ $this, 'setup_extension' ] );
+
 		// Add Phone Number field in Easy Digital Downloads Plugin which is mandatory for most of the India Payment Gateways
 		require_once 'custom-field-phone.php';
 	}
@@ -59,7 +61,7 @@ class Extension extends AbstractPluginIntegration {
 	 *
 	 * @return void
 	 */
-	public function setup() {
+	public function setup_extension() {
 		add_filter( 'pronamic_payment_source_text_easydigitaldownloads', [ $this, 'source_text' ], 10, 2 );
 		add_filter( 'pronamic_payment_source_description_easydigitaldownloads', [ $this, 'source_description' ], 10, 2 );
 
