@@ -3,7 +3,7 @@
  * Easy Digital Downloads gateway
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2022 Pronamic
+ * @copyright 2005-2023 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay\Extensions\EasyDigitalDownloads
  */
@@ -25,7 +25,7 @@ use Pronamic\WordPress\Pay\Payments\PaymentLineType;
 /**
  * Title: Easy Digital Downloads gateway
  * Description:
- * Copyright: 2005-2022 Pronamic
+ * Copyright: 2005-2023 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -243,18 +243,13 @@ class Gateway {
 		echo '<legend>', \esc_html( $this->checkout_label ), '</legend>';
 
 		foreach ( $fields as $field ) {
-			$label = $field->get_label();
-
-			if ( $field->is_required() ) {
-				$label .= ' <span class="edd-required-indicator">*</span>';
-			}
-
 			echo '<p>';
 
 			\printf(
-				'<label for="%s">%s</label>',
+				'<label for="%s">%s%s</label>',
 				\esc_attr( $field->get_id() ),
-				\esc_html( $label )
+				\esc_html( $field->get_label() ),
+				$field->is_required() ? ' <span class="edd-required-indicator">*</span>' : ''
 			);
 
 			$field->output();

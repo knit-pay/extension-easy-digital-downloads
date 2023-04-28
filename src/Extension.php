@@ -3,7 +3,7 @@
  * Easy Digital Downloads extension
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2022 Pronamic
+ * @copyright 2005-2023 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay\Extensions\EasyDigitalDownloads
  */
@@ -13,14 +13,13 @@ namespace Pronamic\WordPress\Pay\Extensions\EasyDigitalDownloads;
 use Pronamic\WordPress\Pay\AbstractPluginIntegration;
 use Pronamic\WordPress\Pay\Core\PaymentMethods;
 use Pronamic\WordPress\Pay\Payments\PaymentStatus as Core_Statuses;
-use Pronamic\WordPress\Pay\Core\Util;
 use Pronamic\WordPress\Pay\Payments\Payment;
 use Pronamic\WordPress\Pay\Plugin;
 
 /**
  * Title: Easy Digital Downloads extension
  * Description:
- * Copyright: 2005-2022 Pronamic
+ * Copyright: 2005-2023 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -52,7 +51,7 @@ class Extension extends AbstractPluginIntegration {
 
 		/**
 		 * Plugins loaded.
-		 * 
+		 *
 		 * @link https://github.com/pronamic/wp-pronamic-pay-easy-digital-downloads/issues/3
 		 */
 		add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
@@ -163,6 +162,7 @@ class Extension extends AbstractPluginIntegration {
 			'pronamic_pay_mb_way'                  => PaymentMethods::MB_WAY,
 			'pronamic_pay_payconiq'                => PaymentMethods::PAYCONIQ,
 			'pronamic_pay_paypal'                  => PaymentMethods::PAYPAL,
+			'pronamic_pay_riverty'                 => PaymentMethods::RIVERTY,
 			'pronamic_pay_spraypay'                => PaymentMethods::SPRAYPAY,
 			'pronamic_pay_twint'                   => PaymentMethods::TWINT,
 		];
@@ -240,7 +240,12 @@ class Extension extends AbstractPluginIntegration {
 	 */
 	public static function maybe_empty_cart( $post_id ) {
 		// Only empty cart when handling returns.
-		if ( ! Util::input_has_vars( INPUT_GET, [ 'payment', 'key' ] ) ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		if (
+			! \array_key_exists( 'payment', $_GET )
+				||
+			! \array_key_exists( 'key', $_GET )
+		) {
 			return;
 		}
 

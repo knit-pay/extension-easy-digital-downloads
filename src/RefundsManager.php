@@ -3,7 +3,7 @@
  * Easy Digital Downloads refunds
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2022 Pronamic
+ * @copyright 2005-2023 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay\Extensions\EasyDigitalDownloads
  */
@@ -15,6 +15,7 @@ use Exception;
 use Pronamic\WordPress\Money\Money;
 use Pronamic\WordPress\Pay\Payments\Payment;
 use Pronamic\WordPress\Pay\Plugin;
+use Pronamic\WordPress\Pay\Refunds\Refund;
 
 /**
  * Easy Digital Downloads refunds
@@ -133,27 +134,19 @@ class RefundsManager {
 			$payment->get_total_amount()->get_currency()
 		);
 
-		$refund_reference = Plugin::create_refund( $transaction_id, $gateway, $amount );
+		$refund = new Refund( $payment, $amount );
 
-		if ( null === $refund_reference ) {
-			throw new \Exception( __( 'Unable to create refund at gateway.', 'pronamic_ideal' ) );
-		}
+		Plugin::create_refund( $refund );
 
 		// Update payment amount refunded.
 		$edd_refunded_amount = $edd_payment->get_meta( '_pronamic_pay_amount_refunded', true );
 
-		$refunded_amount = $payment->get_refunded_amount();
-
-		if ( null === $refunded_amount ) {
-			$refunded_amount = new Money( 0, $payment->get_total_amount()->get_currency() );
-		}
-
-		$refunded_amount->add( $amount );
+		$refunded_amount = $payment->get_refunded_amount()->add( $amount );
 
 		$edd_payment->update_meta( '_pronamic_pay_amount_refunded', (string) $refunded_amount->get_value(), $edd_refunded_amount );
 
 		// Add refund payment note.
-		$this->add_refund_payment_note( $edd_payment, $payment->get_id(), $amount, $refund_reference );
+		$this->add_refund_payment_note( $edd_payment, $payment->get_id(), $amount, $refund->psp_id );
 	}
 
 	/**
@@ -166,13 +159,7 @@ class RefundsManager {
 		// Check refunded amount.
 		$refunded_amount = $payment->get_refunded_amount();
 
-		if ( null === $refunded_amount ) {
-			return;
-		}
-
-		$refunded_value = $refunded_amount->get_value();
-
-		if ( empty( $refunded_value ) ) {
+		if ( $refunded_amount->get_value() <= 0 ) {
 			return;
 		}
 
@@ -264,7 +251,7 @@ class RefundsManager {
 		// Check refunded amount.
 		$refunded_amount = $payment->get_refunded_amount();
 
-		if ( null === $refunded_amount ) {
+		if ( $refunded_amount->get_value() <= 0 ) {
 			return;
 		}
 
