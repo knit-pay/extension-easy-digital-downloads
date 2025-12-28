@@ -7,6 +7,29 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [4.3.6] - 2024-12-17
+
+### Commits
+
+- Allow automattic/jetpack-autoloader Composer plugin. ([28db472](https://github.com/pronamic/wp-pronamic-pay-easy-digital-downloads/commit/28db472d1817ac607bb3234ab8e5fc085afa0829))
+- Happy 2024. ([0197886](https://github.com/pronamic/wp-pronamic-pay-easy-digital-downloads/commit/019788639ada9c6f859afd3c509b687bb8e5c42c))
+
+Full set of changes: [`4.3.5...4.3.6`][4.3.6]
+
+[4.3.6]: https://github.com/pronamic/wp-pronamic-pay-easy-digital-downloads/compare/v4.3.5...v4.3.6
+
+## [4.3.5] - 2024-03-26
+
+### Composer
+
+- Changed `php` from `>=7.4` to `>=8.0`.
+- Changed `wp-pay/core` from `^4.9` to `v4.16.0`.
+	Release notes: https://github.com/pronamic/wp-pay-core/releases/tag/v4.16.0
+
+Full set of changes: [`4.3.4...4.3.5`][4.3.5]
+
+[4.3.5]: https://github.com/pronamic/wp-pronamic-pay-easy-digital-downloads/compare/v4.3.4...v4.3.5
+
 ## [4.3.4] - 2023-06-01
 
 ### Commits

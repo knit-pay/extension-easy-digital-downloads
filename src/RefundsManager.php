@@ -3,7 +3,7 @@
  * Easy Digital Downloads refunds
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2023 Pronamic
+ * @copyright 2005-2024 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay\Extensions\EasyDigitalDownloads
  */
@@ -122,7 +122,7 @@ class RefundsManager {
 		$gateway = $payment->get_gateway();
 
 		if ( null === $gateway ) {
-			throw new Exception( __( 'Unable to process refund because gateway does not exist.', 'pronamic_ideal' ) );
+			throw new \Exception( \esc_html__( 'Unable to process refund because gateway does not exist.', 'pronamic_ideal' ) );
 		}
 
 		// Transaction ID.

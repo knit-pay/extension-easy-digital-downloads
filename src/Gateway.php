@@ -3,7 +3,7 @@
  * Easy Digital Downloads gateway
  *
  * @author    Pronamic <info@pronamic.eu>
- * @copyright 2005-2023 Pronamic
+ * @copyright 2005-2024 Pronamic
  * @license   GPL-3.0-or-later
  * @package   Pronamic\WordPress\Pay\Extensions\EasyDigitalDownloads
  */
@@ -25,7 +25,7 @@ use Pronamic\WordPress\Pay\Payments\PaymentLineType;
 /**
  * Title: Easy Digital Downloads gateway
  * Description:
- * Copyright: 2005-2023 Pronamic
+ * Copyright: 2005-2024 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -650,12 +650,12 @@ class Gateway {
 	 * Get payment transaction ID
 	 *
 	 * @link https://github.com/easydigitaldownloads/Easy-Digital-Downloads/blob/2.3/includes/payments/functions.php#L1378-L1398
-	 *
 	 * @param string $payment_id Payment ID.
-	 *
 	 * @return null
 	 */
 	public function get_payment_transaction_id( $payment_id ) {
-		return null;
+		$payment_id = null;
+
+		return $payment_id;
 	}
 }
